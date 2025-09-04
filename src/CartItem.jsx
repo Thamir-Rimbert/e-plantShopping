@@ -8,12 +8,23 @@ const CartItem = ({ onContinueShopping }) => {
   const dispatch = useDispatch();
 
   // Calculate total amount for all products in the cart
-  const calculateTotalAmount = () => {
- 
+  const calculateTotalAmount = ( cart, plantsArray) => {
+       let totalCost = 0;
+       cart.forEach((cartItem) => {
+        plantsArray.forEach((category) => {
+            category.plants.forEach((plant) => {
+                if (plant.name === cartItem.name) {
+                    const plantCost = parseFloat(item.cost.substring(1));
+                    totalCost += plantCost * cartItem.quatity;
+                }
+            }); 
+        });
+       });
+       return totalCost;
   };
 
   const handleContinueShopping = (e) => {
-   
+    e.preventDefault();
   };
 
 
